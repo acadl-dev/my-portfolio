@@ -17,6 +17,7 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import Image from 'next/image'
 
 export default function Portfolio() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -176,7 +177,14 @@ export default function Portfolio() {
               />
               <div className="relative w-full h-full bg-gray-800 rounded-full border-4 border-purple-500 overflow-hidden">
                 <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-6xl font-bold text-purple-400">
-                  FOTO
+                  <div className="relative w-full h-full bg-gray-800 rounded-full border-4 border-purple-500 overflow-hidden">
+                    <Image
+                      src="/img001.png" // Substitua pelo caminho correto
+                      alt="Sua foto"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -197,129 +205,7 @@ export default function Portfolio() {
             Minhas Skills
           </motion.h2>
 
-          <div className="flex justify-center items-center min-h-[600px]">
-            <motion.div
-              className="relative w-96 h-96"
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.1 }}
-            >
-              {/* Globo base */}
-              <motion.div
-                className="absolute inset-0 rounded-full border-2 border-purple-500/30 bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm"
-                animate={{
-                  rotateY: [0, 360],
-                  rotateX: [0, 15, 0, -15, 0],
-                }}
-                transition={{
-                  rotateY: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                  rotateX: { duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
-                }}
-              />
-
-              {/* Linhas do globo */}
-              <div className="absolute inset-0 rounded-full border border-purple-400/20" />
-              <div className="absolute inset-4 rounded-full border border-purple-400/15" />
-              <div className="absolute inset-8 rounded-full border border-purple-400/10" />
-
-              {/* Ícones das tecnologias posicionados no globo */}
-              {skills.map((skill, index) => {
-                const angle = (index * 360) / skills.length
-                const radius = 140
-                const x = Math.cos((angle * Math.PI) / 180) * radius
-                const y = Math.sin((angle * Math.PI) / 180) * radius
-                const z = Math.sin((angle * Math.PI) / 90) * 50
-
-                return (
-                  <motion.div
-                    key={skill.name}
-                    className="absolute w-16 h-16 flex items-center justify-center rounded-full border-2 border-gray-700 bg-gray-800/80 backdrop-blur-sm group cursor-pointer"
-                    style={{
-                      left: `calc(50% + ${x}px - 32px)`,
-                      top: `calc(50% + ${y}px - 32px)`,
-                      transform: `translateZ(${z}px)`,
-                    }}
-                    animate={{
-                      rotateY: [0, -360],
-                      y: [0, -10, 0],
-                    }}
-                    transition={{
-                      rotateY: { duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" },
-                      y: {
-                        duration: 2 + index * 0.2,
-                        repeat: Number.POSITIVE_INFINITY,
-                        ease: "easeInOut",
-                        delay: index * 0.1,
-                      },
-                    }}
-                    whileHover={{
-                      scale: 1.3,
-                      borderColor: skill.color,
-                      boxShadow: `0 0 20px ${skill.color}50`,
-                    }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                  >
-                    <skill.icon
-                      className="w-8 h-8 text-gray-300 group-hover:text-white transition-all duration-300"
-                      style={{ color: skill.color }}
-                    />
-
-                    {/* Tooltip */}
-                    <motion.div
-                      className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-3 py-1 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"
-                      initial={{ y: 10 }}
-                      whileHover={{ y: 0 }}
-                    >
-                      {skill.name}
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" />
-                    </motion.div>
-                  </motion.div>
-                )
-              })}
-
-              {/* Efeito de brilho central */}
-              <motion.div
-                className="absolute inset-1/2 w-4 h-4 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-sm"
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                }}
-              />
-
-              {/* Partículas orbitando */}
-              {[...Array(8)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-2 h-2 bg-purple-400 rounded-full"
-                  style={{
-                    left: "50%",
-                    top: "50%",
-                  }}
-                  animate={{
-                    rotate: [0, 360],
-                    x: [0, Math.cos((i * 45 * Math.PI) / 180) * 200, 0],
-                    y: [0, Math.sin((i * 45 * Math.PI) / 180) * 200, 0],
-                  }}
-                  transition={{
-                    duration: 8 + i,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                    delay: i * 0.5,
-                  }}
-                />
-              ))}
-            </motion.div>
-          </div>
+          
 
           {/* Texto descritivo */}
           <motion.div
@@ -446,18 +332,18 @@ export default function Portfolio() {
                 <div className="space-y-4">
                   <motion.div className="flex items-center space-x-4 group cursor-pointer" whileHover={{ x: 10 }}>
                     <Mail className="w-6 h-6 text-purple-400 group-hover:text-pink-400 transition-colors duration-300" />
-                    <span className="group-hover:text-purple-400 transition-colors duration-300">acadl@email.com</span>
+                    <span className="group-hover:text-purple-400 transition-colors duration-300">acadl.dev@outlook.com</span>
                   </motion.div>
                   <motion.div className="flex items-center space-x-4 group cursor-pointer" whileHover={{ x: 10 }}>
                     <Phone className="w-6 h-6 text-purple-400 group-hover:text-pink-400 transition-colors duration-300" />
                     <span className="group-hover:text-purple-400 transition-colors duration-300">
-                      +55 (11) 99999-9999
+                      +55 (84) 99155-4520
                     </span>
                   </motion.div>
                   <motion.div className="flex items-center space-x-4 group cursor-pointer" whileHover={{ x: 10 }}>
                     <MapPin className="w-6 h-6 text-purple-400 group-hover:text-pink-400 transition-colors duration-300" />
                     <span className="group-hover:text-purple-400 transition-colors duration-300">
-                      São Paulo, Brasil
+                      Natal, Brasil
                     </span>
                   </motion.div>
                 </div>
@@ -473,13 +359,15 @@ export default function Portfolio() {
                 <h3 className="text-2xl font-semibold">Redes Sociais</h3>
                 <div className="space-y-4">
                   {[
-                    { icon: Github, label: "GitHub", url: "#" },
-                    { icon: Linkedin, label: "LinkedIn", url: "#" },
-                    { icon: Instagram, label: "Instagram", url: "#" },
+                    { icon: Github, label: "GitHub", url: "https://github.com/acadl-dev" },
+                    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/acadldev/" },
+                    { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/ailton.cdl/" },
                   ].map((social, index) => (
                     <motion.a
                       key={social.label}
                       href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center space-x-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-purple-500 transition-all duration-300 group"
                       whileHover={{ scale: 1.02, x: 10 }}
                       initial={{ opacity: 0, y: 20 }}
@@ -509,7 +397,7 @@ export default function Portfolio() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            © 2024 ACADL. Desenvolvido com 💜 e muito código.
+            © 2025 ACADL. 
           </motion.p>
         </div>
       </footer>
