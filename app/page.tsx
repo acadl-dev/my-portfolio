@@ -34,11 +34,11 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "E-commerce Platform",
-      description: "Plataforma completa de e-commerce com Django e PostgreSQL",
-      tech: ["Django", "PostgreSQL", "JavaScript", "CSS"],
-      image: "/placeholder.svg?height=300&width=500",
-      link: "#",
+      title: "BioConsult",
+      description: "Protótipo de site institucional para uma empresa que oferece serviços de consultoria na área biomédica, com foco em credibilidade, inovação e presença digital.",
+      tech: ["React", "TypeScript", "JavaScript", "CSS"],
+      image: "/img002.png?height=300&width=500",
+      link: "https://site-bioconsult-consultoria-git-main-ailtons-projects-35255396.vercel.app/",
     },
     {
       title: "Task Management App",
@@ -62,7 +62,7 @@ export default function Portfolio() {
     { name: "JavaScript", icon: Code, color: "#F7DF1E" },
     { name: "Python", icon: Server, color: "#3776AB" },
     { name: "PostgreSQL", icon: Database, color: "#336791" },
-    { name: "Django", icon: Server, color: "#092E20" },
+    { name: "Django", icon: Server, color: "#13885bff" },
     { name: "Tailwind", icon: Palette, color: "#06B6D4" },
   ]
 
@@ -103,7 +103,7 @@ export default function Portfolio() {
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative">
-        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-20 grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -179,8 +179,8 @@ export default function Portfolio() {
                 <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-6xl font-bold text-purple-400">
                   <div className="relative w-full h-full bg-gray-800 rounded-full border-4 border-purple-500 overflow-hidden">
                     <Image
-                      src="/img001.png" // Substitua pelo caminho correto
-                      alt="Sua foto"
+                      src="/img001.png" 
+                      alt="Cartoon"
                       fill
                       className="object-cover"
                     />
@@ -261,7 +261,7 @@ export default function Portfolio() {
                 whileHover={{ y: -10, rotateX: 5 }}
                 className="group"
               >
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-purple-500 transition-all duration-300 backdrop-blur-sm overflow-hidden">
+                <Card className="bg-gray-800/50 border-gray-700 hover:border-purple-500 transition-all duration-300 backdrop-blur-sm overflow-hidden text-white">
                   <div className="relative overflow-hidden">
                     <img
                       src={project.image || "/placeholder.svg"}
@@ -272,10 +272,11 @@ export default function Portfolio() {
                     <motion.div
                       className="absolute top-4 right-4 opacity-0 group-hover:opacity-100"
                       whileHover={{ scale: 1.1 }}
-                    >
-                      <Button size="sm" className="bg-purple-600 hover:bg-purple-700">
-                        <ExternalLink className="w-4 h-4" />
-                      </Button>
+                    > <a href={project.link} target="_blank">
+                        <Button size="sm" className="bg-purple-600 hover:bg-purple-700">
+                          <ExternalLink className="w-4 h-4" />
+                        </Button>
+                      </a>
                     </motion.div>
                   </div>
                   <CardContent className="p-6">
