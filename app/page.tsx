@@ -38,7 +38,7 @@ export default function Portfolio() {
       description: "Protótipo de site institucional para uma empresa que oferece serviços de consultoria na área biomédica, com foco em credibilidade, inovação e presença digital.",
       tech: ["React", "TypeScript", "JavaScript", "CSS"],
       image: "/img002.png?height=300&width=500",
-      link: "https://site-bioconsult-consultoria-git-main-ailtons-projects-35255396.vercel.app/",
+      link: "https://site-bioconsult-consultoria.vercel.app/",
     },
     {
       title: "Task Management App",
