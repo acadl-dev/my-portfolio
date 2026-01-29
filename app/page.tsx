@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Image from 'next/image'
+import Link from "next/link";
 
 export default function Portfolio() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -34,6 +35,13 @@ export default function Portfolio() {
 
   const projects = [
     {
+      title: "TechBay",
+      description: "TechBay é uma aplicação web desenvolvida com .NET Razor Pages que simula um e-commerce de eletrônicos. O sistema permite que o usuário atue como vendedor ou comprador, oferecendo uma experiência completa de marketplace.",
+      tech: ["ASP.NET", "Razor Pages", "C#", "Tailwind"],
+      image: "https://iili.io/fsnVAeR.png",
+      link: "https://github.com/acadl-dev/TechBay.git",
+    },
+    {
       title: "BioConsult",
       description: "Protótipo de site institucional para uma empresa que oferece serviços de consultoria na área biomédica, com foco em credibilidade, inovação e presença digital.",
       tech: ["React", "TypeScript", "JavaScript", "CSS"],
@@ -41,30 +49,30 @@ export default function Portfolio() {
       link: "https://site-bioconsult-consultoria.vercel.app/",
     },
     {
-      title: "Task Management App",
-      description: "Aplicativo de gerenciamento de tarefas com interface moderna",
-      tech: ["Python", "Django", "HTML", "CSS"],
-      image: "/placeholder.svg?height=300&width=500",
-      link: "#",
-    },
-    {
-      title: "Portfolio Website",
+      title: "Portfólio Website",
       description: "Site portfólio responsivo com animações avançadas",
-      tech: ["HTML", "CSS", "JavaScript"],
-      image: "/placeholder.svg?height=300&width=500",
+      tech: ["React", "CSS", "Tailwind"],
+      image: "https://iili.io/fsnhoq7.png",
       link: "#",
     },
   ]
 
   const skills = [
+    { name: "ASP.NET", icon: Server, color: "#8769f1" },
+    { name: "API RESTfull", icon: Server, color: "#009688" },
+    { name: "Entity Framework", icon: Server, color: "#8769f1" },
+    { name: "SQL Server", icon: Database, color: "#CC2927" },
+    { name: "C#", icon: Code, color: "#239120" },
+    { name: "Django", icon: Server, color: "#41ebaa" },
+    { name: "PostgreSQL", icon: Database, color: "#336791" },
+    { name: "Python", icon: Server, color: "#3776AB" },
     { name: "HTML", icon: Code, color: "#E34F26" },
     { name: "CSS", icon: Palette, color: "#1572B6" },
     { name: "JavaScript", icon: Code, color: "#F7DF1E" },
-    { name: "Python", icon: Server, color: "#3776AB" },
-    { name: "PostgreSQL", icon: Database, color: "#336791" },
-    { name: "Django", icon: Server, color: "#13885bff" },
     { name: "Tailwind", icon: Palette, color: "#06B6D4" },
-  ]
+    { name: "React", icon: Code, color: "#61DAFB" },
+    { name: "React Native", icon: Server, color: "#61DAFB" },
+]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white overflow-hidden">
@@ -103,7 +111,7 @@ export default function Portfolio() {
 
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative">
-        <div className="container mx-auto px-20 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -115,7 +123,7 @@ export default function Portfolio() {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              ACADL
+              Ailton Costa
             </motion.h1>
             <motion.p
               className="text-xl lg:text-2xl text-gray-300"
@@ -123,7 +131,7 @@ export default function Portfolio() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Web Developer & Digital Innovator
+              Desenvolvedor full-stack com foco em backend 
             </motion.p>
             <motion.p
               className="text-lg text-gray-400 max-w-lg"
@@ -131,8 +139,7 @@ export default function Portfolio() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              Transformo ideias em experiências digitais únicas. Especializado em desenvolvimento web full-stack com
-              foco em inovação e performance.
+              Desenvolvedor full-stack, especializado em aplicações web com foco em performance, escalabilidade e boas práticas. Vamos trocar uma idéia?
             </motion.p>
             <motion.div
               className="flex space-x-4"
@@ -140,12 +147,15 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9, duration: 0.8 }}
             >
-              <Button
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-300"
-                size="lg"
-              >
-                Ver Projetos
-              </Button>
+              <Link href="#projetos">
+                <Button
+                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transform hover:scale-105 transition-all duration-300"
+                  size="lg"
+                >
+                  Ver Projetos
+                </Button>
+              </Link>
+              <Link href="#fale_comigo">
               <Button
                 variant="outline"
                 className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transform hover:scale-105 transition-all duration-300 bg-transparent"
@@ -153,6 +163,7 @@ export default function Portfolio() {
               >
                 Fale Comigo
               </Button>
+              </Link>
             </motion.div>
           </motion.div>
 
@@ -162,7 +173,7 @@ export default function Portfolio() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            <div className="relative w-80 h-80 mx-auto">
+            <div className="relative w-96 h-96 mx-auto">
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-xl opacity-30"
                 animate={{
@@ -240,7 +251,7 @@ export default function Portfolio() {
 
       {/* Projects Section */}
       <section className="py-20 relative">
-        <div className="container mx-auto px-6">
+        <div id="projetos" className="container mx-auto px-6">
           <motion.h2
             className="text-4xl lg:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 50 }}
@@ -303,7 +314,7 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 relative">
+      <section id="fale_comigo" className="py-20 relative">
         <div className="container mx-auto px-6">
           <motion.h2
             className="text-4xl lg:text-6xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent"
@@ -337,14 +348,16 @@ export default function Portfolio() {
                   </motion.div>
                   <motion.div className="flex items-center space-x-4 group cursor-pointer" whileHover={{ x: 10 }}>
                     <Phone className="w-6 h-6 text-purple-400 group-hover:text-pink-400 transition-colors duration-300" />
-                    <span className="group-hover:text-purple-400 transition-colors duration-300">
-                      +55 (84) 99155-4520
-                    </span>
+                    <Link href="https://wa.me/5584991554520?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20sobre%20um%20projeto.">
+                      <span className="group-hover:text-purple-400 transition-colors duration-300">
+                        +55 (84) 99155-4520
+                      </span>
+                    </Link>
                   </motion.div>
                   <motion.div className="flex items-center space-x-4 group cursor-pointer" whileHover={{ x: 10 }}>
                     <MapPin className="w-6 h-6 text-purple-400 group-hover:text-pink-400 transition-colors duration-300" />
                     <span className="group-hover:text-purple-400 transition-colors duration-300">
-                      Natal, Brasil
+                      Natal / RN, Brasil
                     </span>
                   </motion.div>
                 </div>
@@ -361,7 +374,7 @@ export default function Portfolio() {
                 <div className="space-y-4">
                   {[
                     { icon: Github, label: "GitHub", url: "https://github.com/acadl-dev" },
-                    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/acadldev/" },
+                    { icon: Linkedin, label: "LinkedIn", url: "https://www.linkedin.com/in/ailtoncostaa/" },
                     { icon: Instagram, label: "Instagram", url: "https://www.instagram.com/ailton.cdl/" },
                   ].map((social, index) => (
                     <motion.a
