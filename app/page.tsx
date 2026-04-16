@@ -59,6 +59,7 @@ export default function Portfolio() {
 
   const skills = [
     { name: "ASP.NET", icon: Server, color: "#8769f1" },
+    { name: "Java", icon: Server, color: "#ffffff" },
     { name: "API RESTfull", icon: Server, color: "#009688" },
     { name: "Entity Framework", icon: Server, color: "#8769f1" },
     { name: "SQL Server", icon: Database, color: "#CC2927" },
